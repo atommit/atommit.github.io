@@ -4,115 +4,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <title>Under Construction</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">æ
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Atommit - Untangle Git Commits</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
     <style>
-        body {
-            background-color: #f4f4f4;
-            color: #333;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+        :root {
+            --primary: #466365;
+            --secondary: #B49A67;
+            --highlight: #d5b67a;
+            --accent: #C4C6E7;
+            --gradient-start: #466365;
+            --gradient-end: #B49A67;
+            --dark-bg: #211c1b;
+            --card-bg: #2c2c2c;
+            --text-color: #dfdfdf;
         }
 
-        .container {
+        /* Navbar Transparency */
+        .navbar {
+            background-color: #B49A6700;
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: #ffffff00;
+        }
+
+        /* Full Height Sections */
+        section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Darker Backgrounds */
+        .bg-dark {
+            background-color: var(--dark-bg);
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        /* Smooth Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Active Link Color */
+        .active-link {
+            color: var(--highlight) !important;
+        }
+
+        /* Team Cards */
+        .team-card {
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 90%;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+        .team-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        p {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 30px;
+        /* Custom Text Color */
+        .text-custom {
+            color: var(--text-color);
         }
 
-        .gif-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+        /* Atom It! Button Styles */
+        .btn-blur {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .attribution {
-            font-size: 0.9em;
-            color: #888;
-            margin-top: 10px;
+        .btn-blur:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
         }
 
-        .attribution a {
-            color: #888;
-            text-decoration: none;
+        /* Footer reveal without extra scroll */
+        .scroll-to-footer {
+            min-height: calc(100vh - 6rem);
+            /* Dynamically adjust to allow scrolling */
         }
 
-        .attribution a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            p {
-                font-size: 1em;
-            }
-
-            .container {
-                height: 100%;
-            }
+        footer {
+            height: 6rem;
         }
     </style>
 </head>
 
-<body>
+<body class="bg-primary text-custom">
+    <!-- Navbar -->
+    <header class="navbar fixed top-0 left-0 w-full z-50">
+        <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-2xl font-bold text-custom cursor-pointer" id="logo">Atommit</div>
+            <ul class="flex space-x-8">
+                <li><a href="#problem" class="hover:text-secondary">Problem</a></li>
+                <li><a href="#solution" class="hover:text-secondary">Solution</a></li>
+                <li><a href="#how-it-works" class="hover:text-secondary">How it Works</a></li>
+                <li><a href="#team" class="hover:text-secondary">Team</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="container">
-        <h1>🚧 Under Construction 🚧</h1>
-        <div id="countdown"></div>
-        <p>We are atomizing commits to bring you something amazing!</p>
-        <div class="gif-container">
-            <img src="images/coding.gif" alt="Git & Commits Animation GIF">
+    <!-- Hero Section -->
+    <section class="flex items-center justify-center bg-gradient text-white">
+        <div class="text-center fade-in">
+            <h1 class="text-6xl font-bold">Untangle Git Commits</h1>
+            <p class="text-xl mt-4">Streamline Your Development Atommit</p>
+            <a href="#solution" class="mt-8 inline-block btn-blur text-primary px-6 py-3 rounded-lg font-semibold">Atom
+                It!</a>
         </div>
-        <div class="attribution">
-            <p>GIF by <a href="https://giphy.com/gifs/nounish-dao-nouns-noggles-Ws6T5PN7wHv3cY8xy8" target="_blank"
-                    rel="noopener noreferrer">GIPHY</a></p>
+    </section>
+
+    <!-- Problem Definition Section -->
+    <section id="problem" class="bg-dark flex items-center justify-center">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4 fade-in text-secondary">The Problem</h2>
+            <p class="text-lg leading-relaxed fade-in text-custom">
+                Tangled Git commits complicate the software development lifecycle, making debugging, integration, and
+                code reviews error-prone and time-consuming.
+            </p>
         </div>
-    </div>
+    </section>
 
+    <!-- Solution Overview Section -->
+    <section id="solution" class="bg-gradient flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4 fade-in">Our Solution: Atommit</h2>
+            <p class="text-lg leading-relaxed fade-in">
+                Atommit is an automatic developer tool that detects and untangles git commits before committing,
+                partitioning them into atomic commits based on the relatedness of code pieces.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 fade-in">
+                <div class="p-6 bg-card-bg shadow-lg rounded-lg">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Analyze</h3>
+                    <p class="leading-relaxed text-custom">Atommit reads code diffs, analyzes syntax trees, and
+                        generates dependency graphs.</p>
+                </div>
+                <div class="p-6 bg-card-bg shadow-lg rounded-lg">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Partition</h3>
+                    <p class="leading-relaxed text-custom">It partitions code changes into atomic commits based on the
+                        relatedness of the changes.</p>
+                </div>
+                <div class="p-6 bg-card-bg shadow-lg rounded-lg">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Suggest</h3>
+                    <p class="leading-relaxed text-custom">Atommit suggests suitable commit messages and lets users
+                        review or modify the results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="bg-dark flex items-center justify-center">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4 fade-in text-secondary">How It Works</h2>
+            <p class="text-lg leading-relaxed mb-8 fade-in text-custom">
+                Atommit provides a workflow that untangles commits by analyzing changes, partitioning them, and
+                suggesting appropriate commit messages.
+            </p>
+            <img src="https://via.placeholder.com/600x400" alt="Workflow Diagram" class="mx-auto fade-in">
+        </div>
+    </section>
+
+    <!-- Team Section (Scrollable to Footer) -->
+    <section id="team" class="bg-gradient scroll-to-footer flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4 fade-in">Meet the Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mt-8 fade-in">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/100" alt="Işıl Özgü">
+                    <h3 class="text-xl font-semibold text-secondary">Işıl Özgü</h3>
+                    <p>Lead Developer</p>
+                    <p class="text-sm text-custom">Specializing in full-stack development, Işıl focuses on creating
+                        intuitive and robust web solutions.</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/100" alt="Burhan Tabak">
+                    <h3 class="text-xl font-semibold text-secondary">Burhan Tabak</h3>
+                    <p>Backend Engineer</p>
+                    <p class="text-sm text-custom">Expert in backend systems, Burhan ensures Atommit runs smoothly and
+                        efficiently behind the scenes.</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/100" alt="Berkay Gündüz">
+                    <h3 class="text-xl font-semibold text-secondary">Berkay Gündüz</h3>
+                    <p>UI/UX Designer</p>
+                    <p class="text-sm text-custom">Berkay brings creativity to Atommit with sleek, user-friendly
+                        interfaces that enhance the user experience.</p>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/100" alt="Sertaç Derya">
+                    <h3 class="text-xl font-semibold text-secondary">Sertaç Derya</h3>
+                    <p>DevOps Specialist</p>
+                    <p class="text-sm text-custom">Sertaç is responsible for the deployment pipeline, automating
+                        workflows for seamless operation.</p>
+                </div>
+                <!-- Team Member 5 -->
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/100" alt="Ulaş Dilek">
+                    <h3 class="text-xl font-semibold text-secondary">Ulaş Dilek</h3>
+                    <p>Data Analyst</p>
+                    <p class="text-sm text-custom">Ulaş analyzes commit data to improve performance and ensure clean
+                        and organized commit histories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-custom py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Atommit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Scroll Animations -->
     <script>
-        var countDownDate = new Date("Dec 31, 2025 23:59:59").getTime();
-        var x = setInterval(function () {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
+        // Add scroll animations
+        const faders = document.querySelectorAll('.fade-in');
+        const options = { threshold: 0.5 };
 
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('fade-in-visible');
+                observer.unobserve(entry.target);
+            });
+        }, options);
 
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "We're live!";
+        // Navbar background change on scroll
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-        }, 1000);
+        });
+
+        // Scroll to top when clicking "Atommit" logo
+        document.getElementById('logo').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Active link highlighting based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.navbar ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 50) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
     </script>
 </body>
 
