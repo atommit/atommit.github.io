@@ -4,11 +4,14 @@ const DecryptDocument = ({ filePath }) => {
     const handleDownload = async () => {
         try {
             const { value: password } = await Swal.fire({
-                title: "Enter Decryption Password",
+                title: "Enter Password",
                 input: "password",
-                inputLabel: "Password",
-                inputPlaceholder: "Enter the password to decrypt the document",
+                inputPlaceholder: "Enter the password to download the document",
                 showCancelButton: true,
+                customClass: {
+                    confirmButton: "swal-custom-confirm",
+                    cancelButton: "swal-custom-cancel",
+                },
             });
 
             if (!password) throw new Error("No password provided.");
@@ -88,7 +91,14 @@ const DecryptDocument = ({ filePath }) => {
             URL.revokeObjectURL(url);
         } catch (err) {
             console.error("Error in handleDownload:", err);
-            Swal.fire("Error", err.message, "error");
+            Swal.fire({
+                title: "Error",
+                text: err.message,
+                icon: "error",
+                customClass: {
+                    confirmButton: "swal-error-confirm",
+                },
+            });
         }
     };
 
