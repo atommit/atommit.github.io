@@ -58,3 +58,21 @@ a {
 .arrow--disabled {
   fill: #332b545d;
 }
+
+.swal-custom-confirm {
+  background-color: transparent !important;
+  color: #332854 !important;
+  font-weight: bold !important;
+}
+
+.swal-custom-cancel {
+  background-color: transparent !important;
+  color: #332854 !important;
+  font-weight: bold !important;
+}
+
+.swal-error-confirm {
+  background-color: transparent !important;
+  color: #332854 !important;
+  font-weight: bold !important;
+}

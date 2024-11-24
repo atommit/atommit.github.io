@@ -35,7 +35,7 @@ export default function Team() {
       description: `Burhan is a Computer Science student at Bilkent University with a keen interest in software development and analytics. He has worked on projects such as BilSync, aiming to enhance university community interactions. Burhan is passionate about coding and enjoys participating in hackathons and coding competitions.`,
     },
     {
-      img: "https://media.licdn.com/dms/image/v2/D4D03AQFMDSa3sjHIRw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1668863932097?e=1737590400&v=beta&t=5PFpG6oSQwq8f2DpBmxHJgCGrntmxAnHY9ogeKUXFWE",
+      img: "https://media.licdn.com/dms/image/v2/D4D03AQF-HkFr9ep-Gg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1732125497562?e=1738195200&v=beta&t=8C4rCEU6r3SRRiKZt5Fs56ESeB40Z8080JeGKiFpDbg",
       name: "Berkay Gündüz",
       description: `Berkay is a Computer Science student at Bilkent University, focusing on software engineering and development. He has experience in various programming languages and frameworks, contributing to multiple team projects. Berkay is enthusiastic about problem-solving and continuously improving his technical skills.`,
     },
