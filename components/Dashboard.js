@@ -72,11 +72,25 @@ export default function Dashboard({ navigate }) {
 		  <div>
 			<h3 className="font-semibold text-lg mb-3">Top Users</h3>
 			<ul>
-			  {userData.map((user, index) => (
-				<li key={index} className="mb-2">
-				  <span className="font-medium">{user.name}</span> - {user.lines}
-				</li>
-			  ))}
+			  {userData.map((user, index) => {
+				const avatarColors = ["bg-[#FF9F43]", "bg-[#29CCFF]", "bg-[#5C5470]", "bg-[#FF6B6B]"];
+				const initials = user.name.split(" ").map((n) => n[0]).join(""); // Get initials
+
+				return (
+				  <li key={index} className="flex items-center mb-2">
+					{/* Avatar */}
+					<div
+					  className={`w-10 h-10 flex items-center justify-center text-white font-bold rounded-full ${
+						avatarColors[index % avatarColors.length]
+					  }`}
+					>
+					  {initials}
+					</div>
+					{/* User Details */}
+					<span className="ml-3 font-medium text-[#332854]">{user.name}</span> - {user.lines}
+				  </li>
+				);
+			  })}
 			</ul>
 		  </div>
 		</div>
