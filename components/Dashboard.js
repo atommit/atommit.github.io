@@ -155,7 +155,7 @@ export default function Dashboard({ navigate }) {
 		{/* Distribution of Commits PieChart */}
 		<div className="mb-8">
 		  <h3 className="font-semibold text-lg mb-3">Distribution of Modification Types</h3>
-		  <PieChart width={300} height={300}>
+		  <PieChart width={300} height={350}>
 			<Pie
 			  data={distributionData}
 			  dataKey="value"
