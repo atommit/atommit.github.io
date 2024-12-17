@@ -73,7 +73,7 @@ export default function Dashboard({navigate}) {
 		  {/* Root Causes PieChart */}
 
 		  <div className="flex-1 flex flex-col items-center">
-			<h3 className="font-semibold text-lg mb-3">Root Causes</h3>
+			<h3 className="font-semibold text-lg mb-3">Distribution of Commit Categories</h3>
 			<PieChart width={300} height={250}>
 			  <Pie
 				data={pieData}
