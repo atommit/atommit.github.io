@@ -17,10 +17,12 @@ import {
 export default function Dashboard({ navigate }) {
   // Static Data for Graphs
   const pieData = [
-	{ name: "Bug-fix", value: 75, color: "#FF9F43" },
-	{ name: "Feature", value: 65, color: "#29CCFF" },
-	{ name: "Refactor", value: 15, color: "#5C5470" },
+	{ name: "Bug-fix", value: 75, color: "#8E44AD" }, // Purple
+	{ name: "Feature", value: 65, color: "#1F78D1" }, // Blue
+	{ name: "Refactor", value: 15, color: "#E67E22" }, // Carrot Orange
   ];
+
+
 
   const barData = [
 	{ day: "Mon", Accepted: 40, "Not Accepted": 20 },
