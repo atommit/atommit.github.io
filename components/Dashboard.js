@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import {
   PieChart,
   Pie,
@@ -14,45 +14,44 @@ import {
   CartesianGrid,
 } from "recharts";
 
-export default function Dashboard({ navigate }) {
+export default function Dashboard({navigate}) {
   // Static Data for Graphs
   const pieData = [
-	{ name: "Bug-fix", value: 75, color: "#8E44AD" }, // Purple
-	{ name: "Feature", value: 65, color: "#1F78D1" }, // Blue
-	{ name: "Refactor", value: 15, color: "#E67E22" }, // Carrot Orange
+	{name: "Bug-fix", value: 75, color: "#8E44AD"}, // Purple
+	{name: "Feature", value: 65, color: "#1F78D1"}, // Blue
+	{name: "Refactor", value: 15, color: "#E67E22"}, // Carrot Orange
   ];
-
 
 
   const barData = [
-	{ day: "Mon", Accepted: 40, "Not Accepted": 20 },
-	{ day: "Tue", Accepted: 35, "Not Accepted": 15 },
-	{ day: "Wed", Accepted: 50, "Not Accepted": 25 },
-	{ day: "Thu", Accepted: 45, "Not Accepted": 18 },
-	{ day: "Fri", Accepted: 55, "Not Accepted": 22 },
+	{day: "Mon", Accepted: 40, "Not Accepted": 20},
+	{day: "Tue", Accepted: 35, "Not Accepted": 15},
+	{day: "Wed", Accepted: 50, "Not Accepted": 25},
+	{day: "Thu", Accepted: 45, "Not Accepted": 18},
+	{day: "Fri", Accepted: 55, "Not Accepted": 22},
   ];
 
   const userData = [
-	{ name: "Sertaç Derya", lines: "45.000 lines" },
-	{ name: "Berkay Gündüz", lines: "35.000 lines" },
-	{ name: "Işıl Özgü", lines: "25.000 lines" },
-	{ name: "Burhan Tabak", lines: "15.000 lines" },
+	{name: "Sertaç Derya", lines: "45.000 lines"},
+	{name: "Berkay Gündüz", lines: "35.000 lines"},
+	{name: "Işıl Özgü", lines: "25.000 lines"},
+	{name: "Burhan Tabak", lines: "15.000 lines"},
   ];
 
   const lineData = [
-	{ day: "01", LastWeek: 4.5, ThisWeek: 5 },
-	{ day: "02", LastWeek: 5, ThisWeek: 3 },
-	{ day: "03", LastWeek: 5, ThisWeek: 2.8 },
-	{ day: "04", LastWeek: 3.7, ThisWeek: 3.3 },
-	{ day: "05", LastWeek: 4.1, ThisWeek: 1.9 },
-	{ day: "06", LastWeek: 2.5, ThisWeek: 2.3 },
-	{ day: "07", LastWeek: 5, ThisWeek: 4 },
+	{day: "01", LastWeek: 4.5, ThisWeek: 5},
+	{day: "02", LastWeek: 5, ThisWeek: 3},
+	{day: "03", LastWeek: 5, ThisWeek: 2.8},
+	{day: "04", LastWeek: 3.7, ThisWeek: 3.3},
+	{day: "05", LastWeek: 4.1, ThisWeek: 1.9},
+	{day: "06", LastWeek: 2.5, ThisWeek: 2.3},
+	{day: "07", LastWeek: 5, ThisWeek: 4},
   ];
 
   const distributionData = [
-	{ name: "Combined", value: 45, color: "#1d46ce" },
-	{ name: "Extracted", value: 30, color: "#4ffcd1" },
-	{ name: "Modified", value: 25, color: "#29CCFF" },
+	{name: "Combined", value: 45, color: "#1d46ce"},
+	{name: "Extracted", value: 30, color: "#4ffcd1"},
+	{name: "Modified", value: 25, color: "#29CCFF"},
   ];
 
   return (
@@ -69,9 +68,10 @@ export default function Dashboard({ navigate }) {
 		</h2>
 
 		{/* Root Causes PieChart and User Table */}
-		<div className="flex justify-center gap-12 mb-8">
+		<div className="flex justify-between mb-8">
 		  {/* Root Causes PieChart */}
-		  <div>
+
+		  <div className="flex-1 flex flex-col items-center">
 			<h3 className="font-semibold text-lg mb-3">Root Causes</h3>
 			<PieChart width={250} height={250}>
 			  <Pie
@@ -89,8 +89,8 @@ export default function Dashboard({ navigate }) {
 			</PieChart>
 		  </div>
 
-		  {/* Top Users Table */}
-		  <div>
+			{/* Top Users Table */}
+		  <div className="flex-1 flex flex-col items-center">
 			<h3 className="font-semibold text-lg mb-3">Top Users</h3>
 			<ul>
 			  {userData.map((user, index) => {
