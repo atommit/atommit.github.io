@@ -36,6 +36,7 @@ export default function Dashboard({navigate}) {
 	{name: "Berkay Gündüz", lines: "35.000 lines"},
 	{name: "Işıl Özgü", lines: "25.000 lines"},
 	{name: "Burhan Tabak", lines: "15.000 lines"},
+	{name: "Ulaş Dilek", lines: "1.000 lines"},
   ];
 
   const lineData = [
@@ -73,7 +74,7 @@ export default function Dashboard({navigate}) {
 
 		  <div className="flex-1 flex flex-col items-center">
 			<h3 className="font-semibold text-lg mb-3">Root Causes</h3>
-			<PieChart width={250} height={250}>
+			<PieChart width={300} height={250}>
 			  <Pie
 				data={pieData}
 				dataKey="value"
@@ -86,6 +87,10 @@ export default function Dashboard({navigate}) {
 				))}
 			  </Pie>
 			  <Tooltip/>
+			  <Legend
+				align="center" // Explicitly align the legend to the center
+				verticalAlign="bottom" // Place it at the bottom of the chart
+			  />
 			</PieChart>
 		  </div>
 
@@ -99,6 +104,7 @@ export default function Dashboard({navigate}) {
 				  "bg-[#29CCFF]",
 				  "bg-[#5C5470]",
 				  "bg-[#FF6B6B]",
+				  "bg-[#000000]",
 				];
 				const initials = user.name
 				  .split(" ")
