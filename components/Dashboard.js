@@ -56,19 +56,19 @@ export default function Dashboard({ navigate }) {
   return (
 	<div className="min-h-screen bg-gray-100 flex justify-center items-center p-10">
 	  <motion.div
-		initial={{ y: -50, opacity: 0 }}
-		animate={{ y: 0, opacity: 1 }}
-		transition={{ duration: 0.5 }}
-		className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full"
+		initial={{y: -50, opacity: 0}}
+		animate={{y: 0, opacity: 1}}
+		transition={{duration: 0.5}}
+		className="bg-white shadow-lg rounded-lg p-8 max-w-5xl w-full"
 	  >
 		{/* Header */}
-		<h2 className="text-3xl font-bold mb-5 text-[#332854]">
+		<h2 className="text-3xl font-bold mb-5 text-[#332854] text-center">
 		  Project Statistics Dashboard
 		</h2>
 
-		{/* Bug-fix PieChart and User Table */}
+		{/* Root Causes PieChart and User Table */}
 		<div className="flex justify-between mb-8">
-		  {/* Bugfix Pie Chart */}
+		  {/* Root Causes PieChart */}
 		  <div>
 			<h3 className="font-semibold text-lg mb-3">Root Causes</h3>
 			<PieChart width={250} height={250}>
@@ -80,10 +80,10 @@ export default function Dashboard({ navigate }) {
 				label
 			  >
 				{pieData.map((entry, index) => (
-				  <Cell key={`cell-${index}`} fill={entry.color} />
+				  <Cell key={`cell-${index}`} fill={entry.color}/>
 				))}
 			  </Pie>
-			  <Tooltip />
+			  <Tooltip/>
 			</PieChart>
 		  </div>
 
@@ -115,8 +115,8 @@ export default function Dashboard({ navigate }) {
 					</div>
 					{/* User Details */}
 					<span className="ml-3 font-medium text-[#332854]">
-                      {user.name}
-                    </span>{" "}
+                  {user.name}
+                </span>{" "}
 					- {user.lines}
 				  </li>
 				);
@@ -125,52 +125,63 @@ export default function Dashboard({ navigate }) {
 		  </div>
 		</div>
 
-		{/* Accepted Lines BarChart */}
-		<div className="mb-8">
-		  <h3 className="font-semibold text-lg mb-3">Accepted Lines (Weekly)</h3>
-		  <BarChart width={500} height={300} data={barData}>
-			<XAxis dataKey="day" />
-			<YAxis />
-			<Tooltip />
-			<Legend />
-			<Bar dataKey="Accepted" fill="#78E04FFF" />
-			<Bar dataKey="Not Accepted" fill="#d9434f" />
-		  </BarChart>
+		{/* Accepted Lines and Modification Types Charts */}
+		<div className="flex justify-between mb-8">
+		  {/* Accepted Lines BarChart */}
+		  <div className="flex-1 mr-4">
+			<h3 className="font-semibold text-lg mb-3 text-center">
+			  Accepted Lines (Weekly)
+			</h3>
+			<BarChart width={400} height={300} data={barData}>
+			  <XAxis dataKey="day"/>
+			  <YAxis/>
+			  <Tooltip/>
+			  <Legend/>
+			  <Bar dataKey="Accepted" fill="#78E04FFF"/>
+			  <Bar dataKey="Not Accepted" fill="#d9434f"/>
+			</BarChart>
+		  </div>
+
+		  {/* Modification Types PieChart */}
+		  <div className="flex-1 ml-4">
+			<h3 className="font-semibold text-lg mb-3 text-center">
+			  Distribution of Modification Types
+			</h3>
+			<PieChart width={350} height={300}>
+			  <Pie
+				data={distributionData}
+				dataKey="value"
+				nameKey="name"
+				innerRadius={70}
+				outerRadius={100}
+				label
+			  >
+				{distributionData.map((entry, index) => (
+				  <Cell key={`cell-${index}`} fill={entry.color}/>
+				))}
+			  </Pie>
+			  <Tooltip/>
+			  <Legend/>
+			</PieChart>
+		  </div>
 		</div>
 
-		{/* Stars for Detangling LineChart */}
-		<div className="mb-8">
-		  <h3 className="font-semibold text-lg mb-3">Average Star Ratings for Detangling</h3>
-		  <LineChart width={500} height={300} data={lineData}>
-			<CartesianGrid strokeDasharray="3 3" />
-			<XAxis dataKey="day" />
-			<YAxis />
-			<Tooltip />
-			<Legend />
-			<Line type="monotone" dataKey="ThisWeek" stroke="#332854" />
-			<Line type="monotone" dataKey="LastWeek" stroke="#C0C7FF" />
-		  </LineChart>
-		</div>
-
-		{/* Distribution of Commits PieChart */}
-		<div className="mb-8">
-		  <h3 className="font-semibold text-lg mb-3">Distribution of Modification Types</h3>
-		  <PieChart width={300} height={350}>
-			<Pie
-			  data={distributionData}
-			  dataKey="value"
-			  nameKey="name"
-			  innerRadius={70}
-			  outerRadius={100}
-			  label
-			>
-			  {distributionData.map((entry, index) => (
-				<Cell key={`cell-${index}`} fill={entry.color} />
-			  ))}
-			</Pie>
-			<Tooltip />
-			<Legend />
-		  </PieChart>
+		{/* Centered Star Ratings LineChart */}
+		<div className="mb-8 flex justify-center">
+		  <div>
+			<h3 className="font-semibold text-lg mb-3 text-center">
+			  Average Star Ratings for Detangling
+			</h3>
+			<LineChart width={500} height={300} data={lineData}>
+			  <CartesianGrid strokeDasharray="3 3"/>
+			  <XAxis dataKey="day"/>
+			  <YAxis/>
+			  <Tooltip/>
+			  <Legend/>
+			  <Line type="monotone" dataKey="ThisWeek" stroke="#332854"/>
+			  <Line type="monotone" dataKey="LastWeek" stroke="#C0C7FF"/>
+			</LineChart>
+		  </div>
 		</div>
 
 		{/* Footer */}
@@ -184,5 +195,6 @@ export default function Dashboard({ navigate }) {
 		</div>
 	  </motion.div>
 	</div>
+
   );
 }
