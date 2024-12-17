@@ -52,6 +52,7 @@ export default function Login ({navigate}) {
 		  <button
 			type="submit"
 			className="w-full bg-indigo-800 text-white py-2 rounded-md hover:bg-indigo-700 transition"
+			onClick={()=> navigate("dashboard")}
 		  >
 			Log In
 		  </button>
