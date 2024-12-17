@@ -50,8 +50,8 @@ export default function Dashboard({ navigate }) {
   ];
 
   const distributionData = [
-	{ name: "Combined", value: 45, color: "#78E04F" },
-	{ name: "Extracted", value: 30, color: "#FF6B6B" },
+	{ name: "Combined", value: 45, color: "#1d46ce" },
+	{ name: "Extracted", value: 30, color: "#4ffcd1" },
 	{ name: "Modified", value: 25, color: "#29CCFF" },
   ];
 
@@ -145,27 +145,33 @@ export default function Dashboard({ navigate }) {
 		  </div>
 
 		  {/* Modification Types PieChart */}
-		  <div className="flex-1 ml-4">
-			<h3 className="font-semibold text-lg mb-3 text-center">
+		  <div className="flex-1 flex flex-col items-center">
+			<h3 className="font-semibold text-lg mb-3">
 			  Distribution of Modification Types
 			</h3>
-			<PieChart width={350} height={300}>
-			  <Pie
-				data={distributionData}
-				dataKey="value"
-				nameKey="name"
-				innerRadius={70}
-				outerRadius={100}
-				label
-			  >
-				{distributionData.map((entry, index) => (
-				  <Cell key={`cell-${index}`} fill={entry.color}/>
-				))}
-			  </Pie>
-			  <Tooltip/>
-			  <Legend/>
-			</PieChart>
+			<div className="relative">
+			  <PieChart width={350} height={300}>
+				<Pie
+				  data={distributionData}
+				  dataKey="value"
+				  nameKey="name"
+				  innerRadius={70}
+				  outerRadius={100}
+				  label
+				>
+				  {distributionData.map((entry, index) => (
+					<Cell key={`cell-${index}`} fill={entry.color}/>
+				  ))}
+				</Pie>
+				<Tooltip/>
+				<Legend
+				  align="center" // Explicitly align the legend to the center
+				  verticalAlign="bottom" // Place it at the bottom of the chart
+				/>
+			  </PieChart>
+			</div>
 		  </div>
+
 		</div>
 
 		{/* Centered Star Ratings LineChart */}
