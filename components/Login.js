@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
-const Login = () => {
+export default function Login ({navigate}) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -51,13 +51,15 @@ const Login = () => {
 		  </button>
 		</form>
 		<p className="text-center mt-4 text-sm text-gray-600">
-		  <a href="#" className="text-indigo-600 hover:underline">
+		  <div
+			onClick={()=>navigate("createAccount")}
+			className="text-indigo-600 hover:underline">
 			Create Account
-		  </a>
+		  </div>
 		</p>
 	  </div>
 	</div>
   );
 };
 
-export default Login;
+

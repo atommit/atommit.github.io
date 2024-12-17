@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
-export default function CreateAccount  ()  {
+export default function CreateAccount  ({navigate})  {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [password, setPassword] = useState("");
@@ -88,9 +88,11 @@ export default function CreateAccount  ()  {
 		  </button>
 		</form>
 		<p className="text-center mt-4 text-sm text-gray-600">
-		  <a href="#" className="text-indigo-600 hover:underline">
+		  <div
+			onClick={()=>navigate("login")}
+			className="text-indigo-600 hover:underline">
 			Log In
-		  </a>
+		  </div>
 		</p>
 	  </div>
 	</div>

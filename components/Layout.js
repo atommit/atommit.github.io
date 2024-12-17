@@ -7,25 +7,23 @@ import Solution from "./Solution";
 import Documents from "./Documents";
 import Footer from "./Footer";
 
-export default function Layout({ navigate }) {
+export default function Layout({navigate}) {
   return (
 
 
-    <>
-      <Nav />
+	<>
+	  <Nav navigate={navigate}/>
 
-      <main className="h-full w-full overflow-auto px-5">
-        <Landing/>
-        <About/>
-        <Solution/>
-        <Team/>
-        <Documents/>
-        <button className="w-40" onClick={() => navigate("dashboard")}>
-          Welcome
-        </button>
+	  <main className="h-full w-full overflow-auto px-5">
+		<Landing/>
+		<About/>
+		<Solution/>
+		<Team/>
+		<Documents/>
 
-      </main>
-      <Footer/>
-    </>
+
+	  </main>
+	  <Footer/>
+	</>
   );
 }
