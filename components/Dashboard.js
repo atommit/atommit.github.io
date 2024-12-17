@@ -67,7 +67,7 @@ export default function Dashboard({ navigate }) {
 		</h2>
 
 		{/* Root Causes PieChart and User Table */}
-		<div className="flex justify-between mb-8">
+		<div className="flex justify-center gap-12 mb-8">
 		  {/* Root Causes PieChart */}
 		  <div>
 			<h3 className="font-semibold text-lg mb-3">Root Causes</h3>
