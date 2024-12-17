@@ -13,6 +13,7 @@ import {
   Line,
   CartesianGrid,
 } from "recharts";
+import {FiX} from "react-icons/fi";
 
 export default function Dashboard({navigate}) {
   // Static Data for Graphs
@@ -61,8 +62,15 @@ export default function Dashboard({navigate}) {
 		initial={{y: -50, opacity: 0}}
 		animate={{y: 0, opacity: 1}}
 		transition={{duration: 0.5}}
-		className="bg-white shadow-lg rounded-lg p-8 max-w-5xl w-full"
+		className="bg-white shadow-lg rounded-lg p-8 max-w-5xl w-full relative"
 	  >
+		<span
+		  onClick={() => navigate("welcome")}
+		  className="absolute top-2 right-2 text-gray-400 cursor-pointer hover:text-gray-600"
+		>
+          <FiX size={24}/>
+        </span>
+
 		{/* Header */}
 		<h2 className="text-3xl font-bold mb-5 text-[#332854] text-center">
 		  Project Statistics Dashboard
@@ -94,7 +102,7 @@ export default function Dashboard({navigate}) {
 			</PieChart>
 		  </div>
 
-			{/* Top Users Table */}
+		  {/* Top Users Table */}
 		  <div className="flex-1 flex flex-col items-center">
 			<h3 className="font-semibold text-lg mb-3">Top Users</h3>
 			<ul>
