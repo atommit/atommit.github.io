@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiEye, FiEyeOff } from "react-icons/fi";
+import {FiEye, FiEyeOff, FiX} from "react-icons/fi";
 
 export default function CreateAccount  ({navigate})  {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +21,13 @@ export default function CreateAccount  ({navigate})  {
 
   return (
 	<div className="flex items-center justify-center min-h-screen bg-gray-50">
-	  <div className="bg-white p-8 rounded-lg shadow-md w-96">
+	  <div className="relative bg-white p-8 rounded-lg shadow-md w-96">
+		<span
+		  onClick={() => navigate("welcome")}
+		  className="absolute top-2 right-2 text-gray-400 cursor-pointer hover:text-gray-600"
+		>
+          <FiX size={24}/>
+        </span>
 		<h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
 		  Join Us
 		</h2>
@@ -58,7 +64,7 @@ export default function CreateAccount  ({navigate})  {
 			  className="absolute right-3 top-2.5 text-gray-400 cursor-pointer"
 			  onClick={() => setShowPassword(!showPassword)}
 			>
-              {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
+              {showPassword ? <FiEyeOff size={20}/> : <FiEye size={20}/>}
             </span>
 		  </div>
 		  <div className="mb-4 relative">
@@ -74,7 +80,7 @@ export default function CreateAccount  ({navigate})  {
 			  className="absolute right-3 top-2.5 text-gray-400 cursor-pointer"
 			  onClick={() => setShowRepeatPassword(!showRepeatPassword)}
 			>
-              {showRepeatPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
+              {showRepeatPassword ? <FiEyeOff size={20}/> : <FiEye size={20}/>}
             </span>
 		  </div>
 		  {error && (
@@ -89,7 +95,7 @@ export default function CreateAccount  ({navigate})  {
 		</form>
 		<p className="text-center mt-4 text-sm text-gray-600">
 		  <div
-			onClick={()=>navigate("login")}
+			onClick={() => navigate("login")}
 			className="text-indigo-600 hover:underline">
 			Log In
 		  </div>
