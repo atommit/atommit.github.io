@@ -33,7 +33,7 @@ export default function Dashboard({ navigate }) {
 		className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full"
 	  >
 		{/* Header */}
-		<h2 className="text-3xl font-bold mb-5 text-[#332854]">Login Dashboard</h2>
+		<h2 className="text-3xl font-bold mb-5 text-[#332854]">Project Statistics Dashboard</h2>
 
 		{/* Bar Chart */}
 		<div className="mb-8">
@@ -43,8 +43,8 @@ export default function Dashboard({ navigate }) {
 			<YAxis />
 			<Tooltip />
 			<Legend />
-			<Bar dataKey="Accepted" fill="#332854" />
-			<Bar dataKey="Not Accepted" fill="#D9D9D9" />
+			<Bar dataKey="Accepted" fill="#78E04FFF" />
+			<Bar dataKey="Not Accepted" fill="#d9434f" />
 		  </BarChart>
 		</div>
 
@@ -53,11 +53,18 @@ export default function Dashboard({ navigate }) {
 		  <div>
 			<h3 className="font-semibold text-lg mb-3">Root Causes</h3>
 			<PieChart width={250} height={250}>
-			  <Pie data={pieData} dataKey="value" nameKey="name" outerRadius={80} label>
+			  <Pie
+				data={pieData}
+				dataKey="value"
+				nameKey="name"
+				outerRadius={80}
+				label
+			  >
 				{pieData.map((entry, index) => (
-				  <Cell key={`cell-${index}`} fill={entry.color} />
+				  <Cell key={`cell-${index}`} fill={entry.color}/>
 				))}
 			  </Pie>
+			  <Tooltip/> {/* Add Tooltip here */}
 			</PieChart>
 		  </div>
 
@@ -78,7 +85,7 @@ export default function Dashboard({ navigate }) {
 		<div className="text-right">
 		  <button className="bg-[#332854] text-white px-4 py-2 rounded-lg hover:bg-[#5A3B96]"
 				  onClick={() => navigate("welcome")}>
-			Go to Welcome Page
+			Back to Welcome Page
 		  </button>
 		</div>
 	  </motion.div>
