@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
-export default function Dashboard() {
+export default function Dashboard({ navigate }) {
   // Static Data for Graphs
   const pieData = [
 	{ name: "Bug-fix", value: 75, color: "#FF9F43" },
