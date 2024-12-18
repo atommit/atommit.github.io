@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function Nav() {
+export default function Nav({ navigate }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
@@ -72,12 +72,13 @@ export default function Nav() {
         >
           Documents
         </a>
-        <a
-          href="/"
-          className="py-2 lg:py-0 rounded-full bg-[#332854] text-white text-lg font-medium py-2.5 px-8 decoration-2 underline-offset-2 hover:bg-[#665b91]"
+        <div
+          onClick={() => navigate("login")}
+          className="py-2 lg:py-0 rounded-full bg-[#332854] text-white text-lg font-medium py-2.5 px-8 decoration-2 underline-offset-2 hover:bg-[#665b91] cursor-pointer"
         >
           Login
-        </a>
+        </div>
+
       </div>
     </motion.nav>
   );
