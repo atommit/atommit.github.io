@@ -41,7 +41,7 @@ export default function Login ({navigate}) {
             </span>
 		  </div>
 		  <div className="flex justify-between items-center mb-6 text-sm">
-			<label className="flex items-center text-gray-600">
+			<label className="flex items-center text-gray-600 cursor-pointer">
 			  <input type="checkbox" className="mr-2"/>
 			  Keep me logged-in
 			</label>
@@ -60,7 +60,7 @@ export default function Login ({navigate}) {
 		<p className="text-center mt-4 text-sm text-gray-600">
 		  <div
 			onClick={() => navigate("createAccount")}
-			className="text-indigo-600 hover:underline">
+			className="text-indigo-600 hover:underline cursor-pointer">
 			Create Account
 		  </div>
 		</p>

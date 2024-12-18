@@ -96,7 +96,7 @@ export default function CreateAccount  ({navigate})  {
 		<p className="text-center mt-4 text-sm text-gray-600">
 		  <div
 			onClick={() => navigate("login")}
-			className="text-indigo-600 hover:underline">
+			className="text-indigo-600 hover:underline cursor-pointer">
 			Log In
 		  </div>
 		</p>
