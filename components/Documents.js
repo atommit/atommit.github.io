@@ -136,14 +136,13 @@ export default function Documents() {
           </div>
           <div className="basis-1/2">
             <span className="plain-regular text-md text-[#93928e] lg:text-lg">
-              Not Available
+              Available
             </span>
           </div>
           <div>
-            <span className="text-md lg:text-lg text-gray-400 cursor-not-allowed">
-              Download
+            <span className="text-md lg:text-lg">
+              <DecryptDocument filePath="/documents/AnalysisAndRequirementsReport.pdf.enc" />
             </span>
-
           </div>
         </motion.a>
         <motion.a
@@ -157,12 +156,32 @@ export default function Documents() {
           </div>
           <div className="basis-1/2">
             <span className="plain-regular text-md text-[#93928e] lg:text-lg">
-              Not Available
+              Available
             </span>
           </div>
           <div>
-            <span className="text-md lg:text-lg text-gray-400 cursor-not-allowed">
-              Download
+            <span className="text-md lg:text-lg">
+              <DecryptDocument filePath="/documents/DemoPresentationAndVideo.link.enc" />
+            </span>
+          </div>
+        </motion.a>
+        <motion.a
+          variants={item}
+          className="flex w-full flex-col rounded-lg bg-[#e2e8f0] py-6 px-6 lg:flex-row lg:items-center"
+        >
+          <div className="basis-1/2">
+            <span className="ogg-medium text-xl text-[#2d2d2d] lg:text-2xl">
+              Logbooks
+            </span>
+          </div>
+          <div className="basis-1/2">
+            <span className="plain-regular text-md text-[#93928e] lg:text-lg">
+              Available
+            </span>
+          </div>
+          <div>
+            <span className="text-md lg:text-lg">
+              <DecryptDocument filePath="/documents/Logbooks.link.enc" />
             </span>
           </div>
         </motion.a>

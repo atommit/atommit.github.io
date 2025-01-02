@@ -1,12 +1,14 @@
 import Swal from "sweetalert2";
 
+const NO_PASSWORD_ERR = "No password provided.";
+
 const DecryptDocument = ({ filePath }) => {
     const handleDownload = async () => {
         try {
             const { value: password } = await Swal.fire({
                 title: "Enter Password",
                 input: "password",
-                inputPlaceholder: "Enter the password to download the document",
+                inputPlaceholder: "Enter the password to decrypt the document",
                 showCancelButton: true,
                 customClass: {
                     confirmButton: "swal-custom-confirm",
@@ -14,7 +16,7 @@ const DecryptDocument = ({ filePath }) => {
                 },
             });
 
-            if (!password) throw new Error("No password provided.");
+            if (!password) throw new Error(NO_PASSWORD_ERR);
 
             const response = await fetch(filePath);
             if (!response.ok) {
@@ -51,7 +53,7 @@ const DecryptDocument = ({ filePath }) => {
                     hash: "SHA-256",
                 },
                 keyMaterial,
-                32 * 8 + 16 * 8
+                32 * 8 + 16 * 8  // 32 bytes for key + 16 bytes for IV
             );
 
             const keyIvBytes = new Uint8Array(keyIvBits);
@@ -75,37 +77,42 @@ const DecryptDocument = ({ filePath }) => {
                 ciphertext
             );
 
-            const decryptedData = removePadding(new Uint8Array(decryptedBuffer));
+            const decryptedData = new Uint8Array(decryptedBuffer);
 
             const originalFileName = getOriginalFileName(filePath);
+            const fileExtension = getFileExtension(originalFileName);
 
-            const blob = new Blob([decryptedData], { type: "application/pdf" });
-            const url = URL.createObjectURL(blob);
+            if (fileExtension === "pdf") {
+                const blob = new Blob([decryptedData], { type: "application/pdf" });
+                const url = URL.createObjectURL(blob);
 
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = originalFileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = originalFileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            } else if (fileExtension === "link") {
+                const linkContent = new TextDecoder().decode(decryptedData);
+                window.open(linkContent.trim(), "_blank");
+            } else {
+                throw new Error("Unsupported file type.");
+            }
         } catch (err) {
-            console.error("Error in handleDownload:", err);
-            Swal.fire({
-                title: "Error",
-                text: err.message,
-                icon: "error",
-                customClass: {
-                    confirmButton: "swal-error-confirm",
-                },
-            });
+            if (err.message != NO_PASSWORD_ERR) {
+                console.error("Error in handleDownload:", err);
+                Swal.fire({
+                    title: "Error",
+                    text: err.message,
+                    icon: "error",
+                    customClass: {
+                        confirmButton: "swal-error-confirm",
+                    },
+                });
+            }
         }
     };
-
-    function removePadding(data) {
-        const paddingLength = data[data.length - 1];
-        return data.slice(0, data.length - paddingLength);
-    }
 
     function getOriginalFileName(filePath) {
         const pathParts = filePath.split("/");
@@ -116,6 +123,10 @@ const DecryptDocument = ({ filePath }) => {
         }
 
         return fileName;
+    }
+
+    function getFileExtension(fileName) {
+        return fileName.split(".").pop().toLowerCase();
     }
 
     return (
